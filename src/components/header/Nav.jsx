@@ -1,38 +1,39 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = ({ styles }) => {
   return (
     <nav className={styles.navMenu}>
       <ul className={styles.ul}>
         <li className={styles.li}>
-          <a href="/home" className={styles.a}>
+          <NavLink to="/" className={styles.a}>
             Home
-          </a>
+          </NavLink>
         </li>
         <li className={styles.li}>
-          <a href="/about" className={styles.a}>
+          <NavLink to="/about" className={styles.a}>
             About
-          </a>
+          </NavLink>
         </li>
         <li className={styles.li}>
-          <a href="/blog" className={styles.a}>
+          <NavLink to="/menu" className={styles.a}>
             Menu
-          </a>
+          </NavLink>
         </li>
         <li className={styles.li}>
-          <a href="/reservations" className={styles.a}>
+          <NavLink to="/reservations" className={styles.a}>
             Reservations
-          </a>
+          </NavLink>
         </li>
         <li className={styles.li}>
-          <a href="/login" className={styles.a}>
+          <NavLink to="/login" className={styles.a}>
             Login
-          </a>
+          </NavLink>
         </li>
         <li className={styles.li}>
-          <a href="/book" role="button" className={styles.a}>
+          <NavLink to="/book" role="button" className={styles.a}>
             book a Table
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>
