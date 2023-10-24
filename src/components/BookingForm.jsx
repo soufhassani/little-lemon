@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 
-const BookingForm = () => {
+const BookingForm = ({ availableTimes, setAvailableTimes }) => {
+  console.log("availableTimesL: ", availableTimes);
+
   const [values, setValues] = useState({
     date: "",
     time: "",
     guests: "",
     occasion: " ",
   });
+  console.log("values: ", values);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +20,11 @@ const BookingForm = () => {
       ...values,
       [e.currentTarget.dataset.type]: e.currentTarget.value,
     });
+  };
+
+  const handleAvailableTimeOnChange = (e) => {
+    handleChange(e);
+    setAvailableTimes({ time: e.currentTarget.value });
   };
 
   return (
@@ -42,21 +50,13 @@ const BookingForm = () => {
       <select
         id="res-time"
         data-type="time"
-        onChange={handleChange}
-        // onChange={(e) =>
-        //   setValues((oldState) => ({
-        //     ...oldState,
-        //     time: e.currentTarget.value,
-        //   }))
-        // }
+        // onChange={ handleChange }
+        onChange={handleAvailableTimeOnChange}
         value={values.time}
       >
-        <option>17:00</option>
-        <option>18:00</option>
-        <option>19:00</option>
-        <option>20:00</option>
-        <option>21:00</option>
-        <option>22:00</option>
+        {availableTimes.map((t) => (
+          <option key={t.time}>{t.time}</option>
+        ))}
       </select>
       <label htmlFor="guests">Number of guests</label>
       <input
